@@ -1,31 +1,19 @@
 Rails.application.routes.draw do
-  get 'sessions/create'
-  get '/auth/facebook/callback' => 'sessions#create'
-  get '/users/new', to: 'users#new', as: 'new_user'
-  root 'static#home'
-  get '/users', to:'users#index', as: 'users'
-  post '/users', to:'users#create'
-  get '/users/:id', to: 'users#show', as: 'user'
-  get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
-  get '/signin', to: 'session#new', as: 'signin'
-  post '/session', to: 'session#create', as: 'session'
-  delete '/session/', to: 'session#destroy', as: 'logout'
-  get '/clubs/new', to: 'clubs#new', as: 'new_club'
-  post '/clubs', to: 'clubs#create'
-  get '/clubs/:id', to: 'clubs#show', as: 'club'
-  get '/clubs/:id/edit', to: 'clubs#edit', as: 'edit_club'
-  patch '/clubs/:id', to: 'clubs#update'
-  delete '/clubs/:id/destroy', to: 'clubs#destroy', as: 'delete_club'
-  get 'players/new', to: 'players#new', as: 'new_player'
-  post 'players/create', to: 'players#create'
-  get 'players/index', to: 'players#index', as: 'players'
-  get 'players/:id/edit', to: 'players#edit', as: 'edit_player'
-  patch 'players/:id', to: 'players#update'
-  get 'players/:id/destroy', to: 'players#destroy', as: 'delete_player'
-  get 'teams/new', to: 'teams#new', as: 'new_team'
-  post 'teams/create', to: 'teams#create'
-  get 'teams/:id', to: 'teams#show', as: 'team'
-  get 'teams/index', to: 'teams#index', as: 'teams'
+ #partial CRUD for ADMIN ONLY, Index and Show for users
+  resources :teams, only: [:create, :new, :edit,:update, :index, :show] do 
+    resources :players, only: :index
+  end
+ #full CRUD ability for clubs but only shows players
+  resources :clubs do
+    resources :players, only: :index
+  end
+ #full CRUD ability on players FOR ADMIN ONLY
+  resources :players
+ 
+  #users have full CRUD ability over their own clubs
+  resources :users, only:[:new, :create,:show] do
+    resources :clubs
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

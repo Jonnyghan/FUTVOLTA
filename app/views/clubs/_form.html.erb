@@ -1,0 +1,41 @@
+<%= form_for @club do |c| %>
+    <%= c.label :name %>
+    <%= c.text_field :name %><br><br>
+
+    <h2><%= c.label :forwards %><br></h2>
+    <% @f.each do |f|%>
+        <%#byebug%>
+        <%= c.radio_button 'players.position','f.id'%> <%=f.name%> <br> 
+        Age: <%=f.age%> years <br>
+        Team: <%=f.team.name%><br><br>
+        <%end%>
+
+   <h2> <%= c.label :midfielders %><br></h2>
+    <% @m.each do |f|%>
+        <%#byebug%>
+        <%= c.radio_button 'players','f.id'%> <%=f.name%> <br> 
+        Age: <%=f.age%> years <br>
+        Team: <%=f.team.name%><br><br>
+    <%end%>
+
+   <h2> <%= c.label :defenders %><br></h2>
+    <% @d.each do |f|%>
+        <%#byebug%>
+        <%= c.radio_button 'players','f.id'%> <%=f.name%> <br> 
+        Age: <%=f.age%> years <br>
+        Team: <%=f.team.name%><br><br>
+    <%end%>
+
+   <h2> <%= c.label :Goalkeepers %><br></h2>
+    <% @g.each do |f|%>
+        <%#byebug%>
+        <%= c.radio_button 'players','f.id'%> <%=f.name%> <br> 
+        Age: <%=f.age%> years <br>
+        Team: <%=f.team.name%><br><br>
+    <%end%>
+
+
+        
+    
+    <%= c.submit "Create your Club and Add Players!"%>
+<% end %>
