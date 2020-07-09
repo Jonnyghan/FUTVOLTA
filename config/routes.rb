@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'sessions/create'
+  get '/auth/facebook/callback' => 'sessions#create'
   get '/users/new', to: 'users#new', as: 'new_user'
   root 'static#home'
   get '/users', to:'users#index', as: 'users'
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
   get 'teams/new', to: 'teams#new', as: 'new_team'
   post 'teams/create', to: 'teams#create'
   get 'teams/:id', to: 'teams#show', as: 'team'
-  get 'teams/index', to: 'teams#index', as; 'teams'
+  get 'teams/index', to: 'teams#index', as: 'teams'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
