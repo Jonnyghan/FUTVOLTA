@@ -5,7 +5,7 @@ class PlayersController < ApplicationController
   def create
   end
 
-  def show
+  def index
   end
 
   def edit
@@ -14,6 +14,7 @@ class PlayersController < ApplicationController
   def update
   end
 
-  def destroyy
+  def destroy
+  
   end
 end
