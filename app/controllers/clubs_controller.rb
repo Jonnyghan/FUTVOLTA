@@ -14,11 +14,12 @@ class ClubsController < ApplicationController
   end
 
   def create
-    @club = Club.create(params[:club])
-  end
-
-  def show
+    byebug
+    @club = Club.create(club_params)
+    club_params['club_players'].values.each{|f| @club.players << Player.find_by(id:f)}
     
+  end
+  def show
   end
 
   def edit
@@ -33,6 +34,15 @@ class ClubsController < ApplicationController
   end
 
   private
+  def club_params
+    params.require(:club).permit(:name, {club_players:[:Fwd, :Mid, :Def, :GK, :any]})
+  end
+  
+  def players_to_club
+    club_params['club_players'].values
+  end
+  
+  
   def current_club
     @club = Club.find_by(params[:id])
   end
@@ -56,6 +66,8 @@ class ClubsController < ApplicationController
     Player.all.where(position: "GK")
   end
   def outfield
-    !Player.all.where(position: "GK")
+    Player.all.where.not(position: "GK")
   end
 end
+
+

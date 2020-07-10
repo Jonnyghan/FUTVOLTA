@@ -1,27 +1,23 @@
-get 'sessions/create'
-  get '/auth/facebook/callback' => 'sessions#create'
-  get '/users/new', to: 'users#new', as: 'new_user'
-  root 'static#home'
-  get '/users', to:'users#index', as: 'users'
-  post '/users', to:'users#create'
-  get '/users/:id', to: 'users#show', as: 'user'
-  get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
-  get '/signin', to: 'session#new', as: 'signin'
-  post '/session', to: 'session#create', as: 'session'
-  delete '/session/', to: 'session#destroy', as: 'logout'
-  get '/clubs/new', to: 'clubs#new', as: 'new_club'
-  post '/clubs', to: 'clubs#create'
-  get '/clubs/:id', to: 'clubs#show', as: 'club'
-  get '/clubs/:id/edit', to: 'clubs#edit', as: 'edit_club'
-  patch '/clubs/:id', to: 'clubs#update'
-  delete '/clubs/:id/destroy', to: 'clubs#destroy', as: 'delete_club'
-  get 'players/new', to: 'players#new', as: 'new_player'
-  post 'players/create', to: 'players#create'
-  get 'players/index', to: 'players#index', as: 'players'
-  get 'players/:id/edit', to: 'players#edit', as: 'edit_player'
-  patch 'players/:id', to: 'players#update'
-  get 'players/:id/destroy', to: 'players#destroy', as: 'delete_player'
-  get 'teams/new', to: 'teams#new', as: 'new_team'
-  post 'teams/create', to: 'teams#create'
-  get 'teams/:id', to: 'teams#show', as: 'team'
-  get 'teams/index', to: 'teams#index', as: 'teams'
+<h2> <%= pl.label :midfielders %><br></h2>
+    <% @m.each do |f|%>
+        <%#byebug%>
+        <%= pl.radio_button 'Mid','f.id'%> <%=f.name%> <br> 
+        Age: <%=f.age%> years <br>
+        Team: <%=f.team.name%><br><br>
+    <%end%>
+
+   <h2> <%= pl.label :defenders %><br></h2>
+    <% @d.each do |f|%>
+        <%#byebug%>
+        <%= pl.radio_button 'Def','f.id'%> <%=f.name%> <br> 
+        Age: <%=f.age%> years <br>
+        Team: <%=f.team.name%><br><br>
+    <%end%>
+
+   <h2> <%= pl.label :Goalkeepers %><br></h2>
+    <% @g.each do |f|%>
+        <%#byebug%>
+        <%= pl.radio_button 'GK','f.id'%> <%=f.name%> <br> 
+        Age: <%=f.age%> years <br>
+        Team: <%=f.team.name%><br><br>
+    <%end%>
