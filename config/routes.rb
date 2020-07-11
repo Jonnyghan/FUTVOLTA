@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
- #partial CRUD for ADMIN ONLY, Index and Show for users
-  resources :teams, only: [:create, :new, :edit,:update, :index, :show] do 
+ # Index ONLY  
+  resources :teams  do 
     resources :players, only: :index
   end
  #full CRUD ability for clubs but only shows players
@@ -11,9 +11,16 @@ Rails.application.routes.draw do
   resources :players
  
   #users have full CRUD ability over their own clubs
-  resources :users, only:[:new, :create,:show] do
+  resources :users, only: :show do
     resources :clubs
   end
+
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
+  get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
+  get '/user/:id', to: 'users#show', as:'user_path'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

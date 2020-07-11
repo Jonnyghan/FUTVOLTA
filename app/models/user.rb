@@ -4,4 +4,5 @@ class User < ApplicationRecord
     validates_uniqueness_of :name
     has_many :clubs
     has_many :players, through: :clubs
+    has_many :teams, through: :players
 end
