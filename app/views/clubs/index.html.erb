@@ -1,2 +1,16 @@
-<h1>Clubs#update</h1>
-<p>Find me in app/views/clubs/update.html.erb</p>
+<h1>Clubs</h1>
+
+<h3><%=@user.name%>'s Clubs</h3>
+<% if @user_clubs.empty?%>
+    <p><%="You have no clubs yet!"%></p>
+    <p><%= link_to('Create a club here!', new_user_club_path(@user))%></p>
+<%else%>
+    <% @user_clubs.each do |c|%>
+        <h4><%=link_to(c.name, user_club_path(c))%></h4>
+    <%end%>    
+<%end%>
+
+<h3>All Clubs</h3>
+<% @clubs.each do |c|%>
+    <h4><%=link_to(c.name, club_path(c))%></h4>
+<%end%>

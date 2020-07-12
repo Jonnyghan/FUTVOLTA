@@ -14,13 +14,13 @@ class UsersController < ApplicationController
     redirect_to new_user_club_path(@user)
    else
     render :new
+   end
     #byebug
   end
 
   def show
     @user = this_user
-    @clubs = @user.clubs
-    @teams = @user.teams
+   
 
   end
 

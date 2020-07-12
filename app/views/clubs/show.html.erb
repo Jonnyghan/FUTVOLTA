@@ -1,2 +1,32 @@
-<h1>Clubs#show</h1>
-<p>Find me in app/views/clubs/show.html.erb</p>
+<h1><%=@club.name%></h1>
+<i>Based on your team, the best formation we found is</i> <%=@formation%>
+<h3><u>Forward(s)</u></h3>
+<% @fo.each do |f|%>
+   Name: <%=  f.name %><br>
+   Age: <%=  f.age %><br>
+   Team: <%=  f.team.name %><br><br>
+  <%end%><br>
+  
+<h3><u>Midfielder(s)</u></h3>
+<% @m.each do |f|%>
+   Name: <%=  f.name %><br>
+   Age: <%=  f.age %><br>
+   Team: <%=  f.team.name %><br><br>
+<%end%><br>
+
+<h3><u>Defender(s)</u></h3>
+<% @d.each do |f|%>
+   Name: <%=  f.name %><br>
+   Age: <%=  f.age %><br>
+   Team: <%=  f.team.name %><br><br>
+<%end%><br>
+
+      
+<h3><u>GoalKeeper</u></h3>
+<% @g.each do |f|%>
+   Name: <%=  f.name %><br>
+   Age: <%=  f.age %><br>
+   Team: <%=  f.team.name %><br>
+<%end%><br>
+  
+

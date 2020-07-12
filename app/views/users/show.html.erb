@@ -1,2 +1,13 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>Hi <%=@user.name%></h1>
+
+<h3>Your Clubs:</h3>
+<% if @user.clubs.empty?%>
+    <p><%="You have no clubs yet!"%></p>
+    <p><%= link_to('Create a club here!', new_user_club_path(@user))%></p>
+<%else%>
+    <% @user.clubs.each do |c|%>
+        <h4><%=link_to(c.name, user_club_path(c))%></h4>
+    <%end%>    
+<%end%>
+
+You have <%=@user.clubs.length%> clubs, with <%=@user.players.length%> players, from <%=@user.teams.uniq.length%> different teams!
