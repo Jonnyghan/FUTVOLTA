@@ -1,24 +1,17 @@
-# README
+*Description*
+Domain for the creation of soccer clubs using the limited number of players available in the database. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+*Installation Instructions*
+-Go to https://github.com/Jonnyghan/FUTVOLTA
+-Click "Clone or Download"
+-Click the Clipboard picture next to the link for "https://github.com/Jonnyghan/FUTVOLTA.git"
+-in Bash type "git clone" and paste the link after clone
 
-* Ruby version
+*License*
+https://opensource.org/licenses/MIT
+or check the LICENSE.md file
 
-* System dependencies
+*Contributor(s)*
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Jonnyghan
