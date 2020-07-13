@@ -1,5 +1,6 @@
+<p><%= link_to('<- back to your page', user_path(@club.user_id))%></p>
 <h1><%=@club.name%></h1>
-<i>Based on your team, the best formation we found is</i> <%=@formation%>
+<i>Based on these players, the best formation for this team is:</i> <%=@formation%>
 <h3><u>Forward(s)</u></h3>
 <% @fo.each do |f|%>
    Name: <%=  f.name %><br>

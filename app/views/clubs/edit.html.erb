@@ -1,2 +1,6 @@
-<h1>Clubs#edit</h1>
-<p>Find me in app/views/clubs/edit.html.erb</p>
+<h1>Edit <%=@club.name%></h1>
+<%@club.players.each do |p|%>
+    -<%=p.name%><br>
+<%end%>
+
+<%=render 'form'%>

@@ -1,13 +1,13 @@
-<h1>Hi <%=@user.name%></h1>
+<h1> <%=@user.name%></h1>
 
 <h3>Your Clubs:</h3>
 <% if @user.clubs.empty?%>
     <p><%="You have no clubs yet!"%></p>
-    <p><%= link_to('Create a club here!', new_user_club_path(@user))%></p>
+    <p><%= link_to('Create a new club here!', new_user_club_path(@user))%></p>
 <%else%>
     <% @user.clubs.each do |c|%>
-        <h4><%=link_to(c.name, user_club_path(c))%></h4>
+        <h4><%=link_to(c.name, user_club_path(c.user_id, c.id))%></h4>
     <%end%>    
 <%end%>
-
+<p><%= link_to('Create a new club here!', new_user_club_path(@user))%></p>
 You have <%=@user.clubs.length%> clubs, with <%=@user.players.length%> players, from <%=@user.teams.uniq.length%> different teams!

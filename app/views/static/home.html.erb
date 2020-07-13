@@ -1,6 +1,6 @@
 <h1>Welcome to <b>FUTVOLTA</b>!</h1>
 <% if session[:user_id] %>
-  <h1>Hiya,<%= @user.name %>! How are you?</h1>
+  <h1>Hiya, <%= @user.name %>! How are you?</h1>
   <%= link_to('Go to your page!', user_path(@user)) %>
 
 <% else %>
