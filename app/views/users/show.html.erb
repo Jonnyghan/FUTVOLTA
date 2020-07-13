@@ -10,4 +10,6 @@
     <%end%>    
 <%end%>
 <p><%= link_to('Create a new club here!', new_user_club_path(@user))%></p>
-You have <%=@user.clubs.length%> clubs, with <%=@user.players.length%> players, from <%=@user.teams.uniq.length%> different teams!
+You have <%=@user.clubs.length%> club(s), with <%=@user.players.length%> players, from <%=@user.teams.uniq.length%> different teams!
+<p><%= link_to('See clubs from other users', clubs_path)%></p>
+<p><%= link_to('See the teams that are currently available', teams_path)%></p>

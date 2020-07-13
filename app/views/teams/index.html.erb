@@ -1,0 +1,7 @@
+
+<h3>Available Teams</h3>
+Click to check out what players are available<br><br>
+<% @teams.each do |c|%>
+    <h4><%=link_to(c.name, team_path(c.id))%></h4><br>
+    
+<%end%>

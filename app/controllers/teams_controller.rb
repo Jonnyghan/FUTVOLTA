@@ -1,31 +1,29 @@
 class TeamsController < ApplicationController
-  before_action :admin?
-  skip_before_action :admin?, only: :index
 
-  def new
-    @team =Team.new
-  end
-
-  def create
-  end
-
+  
+  
   def index
+    @teams = Team.all
   end
 
-  def edit
+  def show
+   @team = this_team
+    team_players
   end
 
-  def update
-  end
 
-  def destroy
-  end
+ private
 
-  private
-  def admin?
-    unless session[:user_id] = User.find_by(name: "Admin").id
-     redirect_to teams_path
-    end
-  end
+ def team_players
+  #byebug
+  @fo=this_team.players.all.where(position: "Fwd")
+  @m= this_team.players.all.where(position: "Mid")
+  @d= this_team.players.all.where(position: "Def")
+  @g= this_team.players.all.where(position: "GK")
+  @o= this_team.players.all.where.not(position: "GK")
+end
 
+def this_team
+  Team.find_by(id: params[:id])
+end
 end

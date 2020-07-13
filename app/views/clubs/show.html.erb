@@ -1,6 +1,9 @@
-<p><%= link_to('<- back to your page', user_path(@club.user_id))%></p>
 <h1><%=@club.name%></h1>
+Created by: <%=@user.name%><br>
 <i>Based on these players, the best formation for this team is:</i> <%=@formation%>
+<%if @club.user_id == session[:user_id]%>
+<p><%= link_to('Edit Your Club', edit_user_club_path(@club.user_id, @club.id))%></p>
+<%end%>
 <h3><u>Forward(s)</u></h3>
 <% @fo.each do |f|%>
    Name: <%=  f.name %><br>
@@ -23,7 +26,7 @@
 <%end%><br>
 
       
-<h3><u>GoalKeeper</u></h3>
+<h3><u>Goalkeeper</u></h3>
 <% @g.each do |f|%>
    Name: <%=  f.name %><br>
    Age: <%=  f.age %><br>

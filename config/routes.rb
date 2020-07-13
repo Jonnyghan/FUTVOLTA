@@ -1,14 +1,10 @@
 Rails.application.routes.draw do
  # Index ONLY  
-  resources :teams  do 
-    resources :players, only: :index
-  end
- #full CRUD ability for clubs but only shows players
-  resources :clubs  do
-    resources :players, only: :index
-  end
- #full CRUD ability on players FOR ADMIN ONLY
-  resources :players
+  resources :teams, only: [:index, :show]
+ 
+  
+ #full CRUD ability for clubs 
+  resources :clubs  
  
   #users have full CRUD ability over their own clubs
   resources :users, only: :show do

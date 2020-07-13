@@ -6,11 +6,12 @@
     <p><%= link_to('Create a club here!', new_user_club_path(@user))%></p>
 <%else%>
     <% @user_clubs.each do |c|%>
-        <h4><%=link_to(c.name, user_club_path(c))%></h4>
+        <h4><%=link_to(c.name, user_club_path(@user.id, c.id))%></h4>
     <%end%>    
 <%end%>
 
 <h3>All Clubs</h3>
 <% @clubs.each do |c|%>
-    <h4><%=link_to(c.name, club_path(c))%></h4>
+    <h4><%=link_to(c.name, club_path(c.id))%></h4>
+    
 <%end%>

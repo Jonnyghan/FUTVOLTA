@@ -37,7 +37,7 @@ class ClubsController < ApplicationController
   def show
     @club = current_club
     formation
-    @user = User.find_by(id: params[:user_id])
+    @user = User.find_by(id: @club.user_id)
   end
 
   def edit
@@ -76,6 +76,7 @@ class ClubsController < ApplicationController
   end
   
   def club_players
+    #byebug
     @fo=current_club.players.all.where(position: "Fwd")
     @m= current_club.players.all.where(position: "Mid")
     @d= current_club.players.all.where(position: "Def")

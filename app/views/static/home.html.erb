@@ -1,11 +1,10 @@
 <h1>Welcome to <b>FUTVOLTA</b>!</h1>
 <% if session[:user_id] %>
   <h1>Hiya, <%= @user.name %>! How are you?</h1>
-  <%= link_to('Go to your page!', user_path(@user)) %>
+  <%= link_to('Go to your page!', user_path(session[:user_id])) %>
 
 <% else %>
 <%= link_to('Log In!', login_path) %><br>
-<%= link_to('Log in with Facebook!', '/auth/facebook') %><br>
 <%= link_to('Create your a new account here!', signup_path) %><br>
 <% end %>
 

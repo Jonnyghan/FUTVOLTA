@@ -1,0 +1,13 @@
+<div class="header"><br>
+
+<div>
+<%if user_is_authenticated %>
+    <div class ="col"><%= link_to('Your Page', user_path(session[:user_id])) %>
+    <div class ="col2"><a href="/teams">Teams</a></div> 
+    <div class= "col3"><a href="/clubs">Clubs</a></div>
+    <div class= "col4"> <a href ="/logout">Log Out</a></div>
+<%else%>
+    <div class ="col"> <a href ="/signup">Sign Up</a></div> 
+    <div class ="col2"> <a href ="/login">Log In</a></div>
+<%end%>
+</div>
