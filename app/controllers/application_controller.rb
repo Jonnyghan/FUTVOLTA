@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
     private
   
     def verified_user
+     #byebug
       redirect_to '/' unless user_is_authenticated
     end
   

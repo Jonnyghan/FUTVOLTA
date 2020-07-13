@@ -4,16 +4,22 @@ class SessionsController < ApplicationController
   end
 
   def create
-    byebug
-    @user = User.find_by(name: params[:name])
-    if !@user 
-      @error = "Account not found. Please try agaim"
-    elsif @user.authenticate(params[:password])
+    #byebug
+    if auth
+     @user = User.find_or_create_by(name: auth['info']['name'],fb_uid: auth['uid'], password_digest: "Facebook")
+     session[:user_id] = @user.id
+     redirect_to user_path(@user)
+    else 
+      @user = User.find_by(name: params[:name])
+       if !@user 
+       @error = "Account not found. Please try agaim"
+      elsif @user.authenticate(params[:password])
         session[:user_id] = @user.id
         redirect_to user_path(@user)
-    else
-      @error = "Please Try Again"
-      render :new
+      else
+        @error = "Please Try Again"
+        render :new
+      end
     end
   end
   
@@ -27,4 +33,7 @@ class SessionsController < ApplicationController
   def auth
     request.env['omniauth.auth']
   end
+
+  
 end
+
