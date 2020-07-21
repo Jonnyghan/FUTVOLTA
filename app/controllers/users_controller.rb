@@ -9,9 +9,10 @@ class UsersController < ApplicationController
   end
 
   def create
+    #byebug
    if  @user = User.create(users_params)
-    @user.id = session[:user_id]
-    redirect_to new_user_club_path(@user)
+    session[:user_id] = @user.id  
+    redirect_to user_path(session[:user_id])
    else
     render :new
    end

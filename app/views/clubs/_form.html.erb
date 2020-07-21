@@ -1,17 +1,7 @@
 <%= form_for(@club) do |c| %>
-    <% if @club.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@club.errors.count, "error") %> prohibited this club from being saved:
-      </h2>
 
-      <ul>
-      <% @club.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= render partial: "layouts/error", locals: { model: @club } %>
+
   <p><i><%=@oopsie%></i></p>
     <%= c.label :name %>
     <%= c.text_field :name %><br><br>

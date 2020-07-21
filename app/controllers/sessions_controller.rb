@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if auth
      @user = User.find_or_create_by(name: auth['info']['name'],fb_uid: auth['uid'], password_digest: "Facebook")
      session[:user_id] = @user.id
-     redirect_to user_path(@user)
+     redirect_to user_path(@user.id)
     else 
       @user = User.find_by(name: params[:name])
        if !@user 

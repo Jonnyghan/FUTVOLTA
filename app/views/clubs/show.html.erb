@@ -1,6 +1,6 @@
 <h1><%=@club.name%></h1>
-Created by: <%=@user.name%><br>
-<i>Based on these players, the best formation for this team is:</i> <%=@formation%>
+Created by: <%=@user.name%><br><br>
+<i>Based on these players, the best formation for this team is:</i> <%=@formation%><br><br>
 <%if @club.user_id == session[:user_id]%>
 <p><%= link_to('Edit Your Club', edit_user_club_path(@club.user_id, @club.id))%></p>
 <%end%>
